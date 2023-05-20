@@ -3,21 +3,22 @@ package com.example.demo;
 import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Component;
-@Component 
 
+
+@Component
 public class Profesor {
 
 	
 	private String nombre;
 	private String apellido;
-	private LocalDateTime fechaNacimienti;
+	private LocalDateTime fechaNacimiento;
 	private String cedula;
 		
 	
 	
 	@Override
 	public String toString() {
-		return "Profesor [nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimienti=" + fechaNacimienti
+		return "Profesor [nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento=" + fechaNacimiento
 				+ ", cedula=" + cedula + "]";
 	}
 	
@@ -35,10 +36,10 @@ public class Profesor {
 		this.apellido = apellido;
 	}
 	public LocalDateTime getFechaNacimienti() {
-		return fechaNacimienti;
+		return fechaNacimiento;
 	}
-	public void setFechaNacimienti(LocalDateTime fechaNacimienti) {
-		this.fechaNacimienti = fechaNacimienti;
+	public void setFechaNacimienti(LocalDateTime fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
 	}
 	public String getCedula() {
 		return cedula;
