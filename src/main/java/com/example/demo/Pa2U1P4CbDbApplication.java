@@ -1,57 +1,79 @@
 package com.example.demo;
 
+import java.lang.annotation.AnnotationTypeMismatchException;
 import java.time.LocalDateTime;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.example.demo.repository.modelo.Estudiante;
+import com.example.demo.service.EstudianteService;
 
 @SpringBootApplication
 public class Pa2U1P4CbDbApplication implements CommandLineRunner{
-		
-	@Autowired  //inyeccion de dependencias
-	private Profesor profe2;
-
+	
+	@Autowired
+	private EstudianteService estudianteService;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U1P4CbDbApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-		System.out.println("Hola mi primer proyecto");
 		
-		Profesor profe=new Profesor ();
-		profe.setApellido("Betancourt");
-		profe.setCedula("1722781000");
-		profe.setFechaNacimienti(LocalDateTime.now());
-		profe.setNombre("Christian");
+		Estudiante miEstudiante = new Estudiante();
+		miEstudiante.setApellido("Boada");
+		miEstudiante.setCedula("13131654");
+		miEstudiante.setNombre("David");
+		miEstudiante.setFechaNacimiento(LocalDateTime.of(1989,7,7,10,50));
 		
-		System.out.println(profe);
-		profe.setApellido("Velez");
-		System.out.println(profe.getApellido());
+		Estudiante miEstudiante1 = new Estudiante();
+		miEstudiante1.setApellido("Betancourt");
+		miEstudiante1.setCedula("12458633");
+		miEstudiante1.setNombre("Christian");
 		
-		//profe2 = new Profesor();
-		
-						
-		System.out.println(profe2);
-		profe2.setApellido("Boada");
-		System.out.println(profe2.getApellido());
+		// se puede h}usar el LocalDateTime o LocalDate
+		miEstudiante1.setFechaNacimiento(LocalDateTime.of(1989,7,7,10,50));
 		
 		
+		//1.- Guardar Estudiante
+		this.estudianteService.guardar(miEstudiante);
+		this.estudianteService.guardar(miEstudiante1);
 		
-		Profesor profe3 = new Profesor();
-		profe3=profe;
-		System.out.println(profe3);
-		profe.setApellido("Aguinaga");
-		System.out.println(profe3);
 		
-		MatriculaCalculo mat=new MatriculaCalculo();
-		mat.realizarMatricula("1");
+		//5.- imprimir Reporte
 		
-		/* Spring frameword}k: Framework que permite la construccion/desarrollo 
-		 de aplicaciones empresariales bsasadas en Spring
-		 */
+		List<Estudiante> reporte = this.estudianteService.reporteDeTodos();
+		System.out.println("Reporte de todos los estudiantes");
+		for(Estudiante estu : reporte) {
+			System.out.println(estu);
+		}
+		
+		//2.-Actualizar
+		miEstudiante1.setApellido("Alban");
+		this.estudianteService.actualizar(miEstudiante1);
+		
+		List<Estudiante> reporte2 = this.estudianteService.reporteDeTodos();
+		System.out.println("Reporte de todos los estudiantes");
+		for(Estudiante estu : reporte2) {
+			System.out.println(estu);
+		};
+		
+		//3.- eliminar 
+		this.estudianteService.borrar("13131654");
+		List<Estudiante> reporte3 = this.estudianteService.reporteDeTodos();
+		System.out.println("Reporte de todos los estudiantes");
+		for(Estudiante estu : reporte3) {
+			System.out.println(estu);
+		}
+		
+		//Buscarpor Cedula
+		
+		
+		
+		
 	}
 
 }

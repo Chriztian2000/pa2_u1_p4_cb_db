@@ -1,6 +1,7 @@
 package com.example.demo;
 
 public class MateriaExtraordinaria {
+	
 	private String nombre;
 	private Integer cantidaCreditos;
 	
@@ -17,10 +18,6 @@ public class MateriaExtraordinaria {
 	public void setCantidaCreditos(Integer cantidaCreditos) {
 		this.cantidaCreditos = cantidaCreditos;
 	}
-	
-	
-	
-
 	
 	
 }

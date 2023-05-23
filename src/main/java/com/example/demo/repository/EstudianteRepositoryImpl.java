@@ -7,34 +7,45 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.repository.modelo.*;
 
-
 @Repository
 public class EstudianteRepositoryImpl implements EstudianteRepository {
-	
+
+	// Mok servicios de simulacion de base de datos
 	private static List<Estudiante> baseDatos = new ArrayList<>();
 
 	@Override
 	public void insertar(Estudiante estudiante) {
-		// TODO Auto-generated method stub
-		
+		baseDatos.add(estudiante);
 	}
 
 	@Override
 	public void actualizar(Estudiante estudiante) {
-		// TODO Auto-generated method stub
-		
+		Estudiante estu = this.selecionar(estudiante.getCedula());
+		this.eliminar(estudiante.getCedula());
+		this.insertar(estudiante);
 	}
 
 	@Override
 	public Estudiante selecionar(String cedula) {
-		// TODO Auto-generated method stub
-		return null;
+		Estudiante estuEncontrado = new Estudiante();
+		for (Estudiante estu : baseDatos) {
+			if (cedula.equals(estu.getCedula())) {
+				estuEncontrado = estu;
+			}
+		}
+		return estuEncontrado;
 	}
 
 	@Override
 	public void eliminar(String cedula) {
-		// TODO Auto-generated method stub
-		
+		Estudiante estu =  this.selecionar(cedula);
+		baseDatos.remove(estu);
+	}
+
+	
+	@Override
+	public List<Estudiante> selecionarTodos() {
+		return baseDatos;
 	}
 	
 	
