@@ -4,13 +4,10 @@ import java.time.LocalDateTime;
 
 public class Estudiante {
 	
-
 	private String nombre;
 	private String apellido;
 	private LocalDateTime fechaNacimiento;
 	private String cedula;
-	
-	
 	
 	//get y set
 	public String getNombre() {
@@ -44,9 +41,4 @@ public class Estudiante {
 		return "Estudiante [nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento=" + fechaNacimiento
 				+ ", cedula=" + cedula + "]";
 	}
-	
-	
-	
-		
-
 }

@@ -4,18 +4,14 @@ import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class Profesor {
-
 	
 	private String nombre;
 	private String apellido;
 	private LocalDateTime fechaNacimiento;
 	private String cedula;
 		
-	
-	
 	@Override
 	public String toString() {
 		return "Profesor [nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento=" + fechaNacimiento
@@ -47,5 +43,4 @@ public class Profesor {
 	public void setCedula(String cedula) {
 		this.cedula = cedula;
 	}
-
 }

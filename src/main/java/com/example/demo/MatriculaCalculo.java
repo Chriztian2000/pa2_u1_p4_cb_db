@@ -17,7 +17,5 @@ public class MatriculaCalculo {
 			System.out.println("se inserto materia extraordinaria");
 
 		}
-
 	}
-
 }
