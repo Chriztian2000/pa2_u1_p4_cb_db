@@ -2,11 +2,12 @@ package com.example.demo.banco.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.demo.banco.repository.CuentaRepository;
 import com.example.demo.banco.repository.modelo.Cuenta;
 @Service
 public class CuentaServiceImpl implements CuentaService{
+	
+	
 	
 	@Autowired
 	private CuentaRepository cuentaRepository;
@@ -25,15 +26,18 @@ public class CuentaServiceImpl implements CuentaService{
 
 	@Override
 	public void borrar(String numero) {
-		// TODO Auto-generated method stu
 		this.cuentaRepository.eliminar(numero);
 		
 	}
 
 	@Override
 	public Cuenta buscarPorNumero(String numero) {
-		// TODO Auto-generated method stub
+		// Solo se utiliza cuando se realiza un calculo o una logica de comparacion 
+		// caso contrario se usa el repository
 		return this.cuentaRepository.seleccionar(numero);
+		
+		
+		
 	}
 
 }
