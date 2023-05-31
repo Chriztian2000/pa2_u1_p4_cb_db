@@ -2,8 +2,10 @@ package com.example.demo.banco.service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.banco.repository.CuentaRepository;
@@ -17,6 +19,9 @@ public class TranferenciaServiceImpl implements TranferenciaService {
 
 	@Autowired
 	private CuentaRepository cuentaRepository;
+	@Autowired
+	@Qualifier("nacional")
+	private CalculoMontoDebitarService calculoMontoDebitarService;
 
 	@Autowired
 	private TransfereenciaRepository transferenciaRepository;
@@ -100,6 +105,12 @@ public class TranferenciaServiceImpl implements TranferenciaService {
 
 		}
 
+	}
+
+	@Override
+	public List<Transferencia> estadoCuenta() {
+		// TODO Auto-generated method stub
+		return this.transferenciaRepository.buscarTodos();
 	}
 
 }

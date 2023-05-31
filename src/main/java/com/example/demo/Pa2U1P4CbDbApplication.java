@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -9,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.banco.repository.modelo.Cuenta;
+import com.example.demo.banco.repository.modelo.Transferencia;
 import com.example.demo.banco.service.CuentaService;
 import com.example.demo.banco.service.TranferenciaService;
 
@@ -49,6 +51,21 @@ public class Pa2U1P4CbDbApplication implements CommandLineRunner {
 		
 		System.out.println("Saldo origen: "+this.cuentaService.buscarPorNumero("123456").getSaldo());
 		System.out.println("Saldo destino: "+this.cuentaService.buscarPorNumero("654321").getSaldo());
+		
+		List<Transferencia> a= this.tranferenciaService.estadoCuenta();
+		for (Transferencia transferencia : a) {
+			System.err.println("Registro de Cuentas");
+			System.out.println("Registro1 " +transferencia.getCuentaOrigen());
+			System.out.println("Registro2 " +transferencia.getCuentaDestino());
+			
+			//Reporte que tenga registro ctaO ctaD Fecha 
+			System.err.println("Transferencia");
+			System.out.println("Registro1 " +"CtaOrigen: "
+					+ "\n"+transferencia.getCuentaOrigen()+" "
+							+ "\nCtaDesti: "+transferencia.getCuentaDestino()+""
+									+ "\n fecha: "+transferencia.getFecha()   );
+		}
+
 		
 		
 		
