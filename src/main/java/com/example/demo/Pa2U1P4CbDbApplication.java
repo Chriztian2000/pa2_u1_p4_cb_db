@@ -63,14 +63,7 @@ public class Pa2U1P4CbDbApplication implements CommandLineRunner {
 			System.out.println("Registro1 " +"CtaOrigen: "
 					+ "\n"+transferencia.getCuentaOrigen()+" "
 							+ "\nCtaDesti: "+transferencia.getCuentaDestino()+""
-									+ "\n fecha: "+transferencia.getFecha()   );
+									+ "\nfecha: "+transferencia.getFecha()   );
 		}
-
-		
-		
-		
-		
-		
-		
 	}
 }
