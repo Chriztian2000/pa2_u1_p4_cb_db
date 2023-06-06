@@ -24,6 +24,9 @@ public class Impuesto {
 	@Override
 	public String toString() {
 		return "Impuesto [iva=" + iva + "]";
+		
+		
+		
 	}
 	
 	
